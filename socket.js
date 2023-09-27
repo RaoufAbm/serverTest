@@ -2,7 +2,9 @@ const net = require('net');
 
 const server = net.createServer(socket => {
   console.log('Client connected');
-
+server.on('error', err => {
+  console.error('Server error:', err);
+});
   // Handle data received from the client
   socket.on('data', data => {
     console.log(`Received data from client: ${data}`);
